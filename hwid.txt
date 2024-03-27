@@ -1,7 +1,4 @@
 hwids = {
-"b406fa9e21fd698191ef458559cbbc04f88d43e3eeeb763f7ca0fa8a44ae39ac", --LongPro#7176
-"2524cd69263b3ac4961dc618fc5cf11d710cd2257cf97a090812bf4cbcbf9e9b",  --casterciu
-"a017730c37d65fdaff7885910b775271", --pino0513
-"125232f1c9310fa4ab0becb4a14b8fbfaba71e7f7a7273fc8447bd19f96dc91f" --KatGhostHunter
+"125232f1c9310fa4ab0becb4a14b8fbfaba71e7f7a7273fc8447bd19f96dc91"
 }
 return hwids
