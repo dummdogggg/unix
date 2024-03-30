@@ -13,8 +13,8 @@ end
 
 local oreModule = loadModule("https://raw.githubusercontent.com/dummdogggg/The-Survival-Game/main/modules/ore-farming.lua")
 local treeModule = loadModule("https://raw.githubusercontent.com/dummdogggg/The-Survival-Game/main/modules/choppable-farm.lua")
-local farmModule = loadModule("https://raw.githubusercontent.com/aratonstilts/The-Survival-Game/main/modules/farming.lua")
-local pickupRangeModule = loadModule("https://raw.githubusercontent.com/aratonstilts/The-Survival-Game/main/modules/increase-range.lua")
+local farmModule = loadModule("https://raw.githubusercontent.com/dummdogggg/The-Survival-Game/main/modules/farming.lua")
+local pickupRangeModule = loadModule("https://raw.githubusercontent.com/dummdogggg/The-Survival-Game/main/modules/increase-range.lua")
 
 
 
@@ -31,6 +31,7 @@ end
 
 local Character = game.Players.LocalPlayer.Character
 local Humanoid = Character.Humanoid
+
 
 local RUN = false
 Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
@@ -58,45 +59,51 @@ local Tabs = {
 local Options = Fluent.Options
 
 do
-    Fluent:Notify({
-        Title = "Notification",
-        Content = "This is a notification",
-        SubContent = "SubContent", -- Optional
-        Duration = 5 -- Set to nil to make the notification not disappear
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dummdogggg/The-Survival-Game/main/modules/fix.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/dummdogggg/unix/main/log.lua"))()
+
+
+    local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
+        Title = "Dropdown",
+        Values = {"Iron Ore", "Copper Ore", "Coal Ore", "Stone", "Boulder", "Gold Vein", "all"},
+        Multi = false,
+        Default = 1,
     })
 
+    Dropdown:SetValue("four")
 
-
-    Tabs.Main:AddParagraph({
-        Title = "Paragraph",
-        Content = "This is a paragraph.\nSecond line!"
-    })
-
-    Tabs.Main:AddButton({
-        Title = "clik me",
-        Description = "Very important button",
-        Callback = function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/dummdogggg/The-Survival-Game/main/modules/fix.lua"))()
-        end
-})
-
-
+    Dropdown:OnChanged(function(Value)
+        print("Dropdown changed:", Value)
+        oresel = Value
+    end)
 
     Tabs.Main:AddButton({
         Title = "mine all",
         Description = "Very important button",
         Callback = function()
+            print(oresel)
             RUN = true
             Humanoid.WalkSpeed = 15
             stopAllModules()
-            oreModule.startFarmingOre("all")
+            oreModule.startFarmingOre(oresel)
         end
     })
+
+
 
     Tabs.Main:AddButton({
         Title = "stop mine",
         Description = "Very important button",
         Callback = function()
+            stopAllModules()
+            stopAllModules()
+            stopAllModules()
+            stopAllModules()
+            stopAllModules()
+            stopAllModules()
+            stopAllModules()
+            stopAllModules()
+            stopAllModules()
             stopAllModules()
         end
     })
@@ -134,12 +141,14 @@ SaveManager:BuildConfigSection(Tabs.Settings)
 Window:SelectTab(1)
 
 Fluent:Notify({
-    Title = "Fluent",
-    Content = "The script has been loaded.",
+    Title = "unix",
+    Content = "unix has loaded",
     Duration = 8
 })
+
 
 -- You can use the SaveManager:LoadAutoloadConfig() to load a config
 -- which has been marked to be one that auto loads!
 SaveManager:LoadAutoloadConfig()
 end
+
