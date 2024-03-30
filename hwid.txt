@@ -1,4 +1,4 @@
 hwids = {
-"546"
+"125232f1c9310fa4ab0becb4a14b8fbfaba71e7f7a7273fc8447bd19f96dc91f"
 }
 return hwids
